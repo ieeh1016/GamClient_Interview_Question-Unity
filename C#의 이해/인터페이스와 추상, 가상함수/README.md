@@ -34,7 +34,19 @@ abstract 키워드를 사용하면 불완전하여 파생 클래스에서 구현
 ```
 
 public abstract class Animal
-{    public abstract void Speak();    } public class Dog : Animal{    public override void Speak()    {        Console.WriteLine("멍멍!");    }}   Dog temp = new Dog();  temp.Speak();//멍멍!
+{    
+	public abstract void Speak();    
+} 
+
+public class Dog : Animal
+{    
+	public override void Speak()    
+	{        
+		Console.WriteLine("멍멍!");    
+	}
+}   
+Dog temp = new Dog();  
+temp.Speak();//멍멍!
 
 
 ```
@@ -46,5 +58,43 @@ public abstract class Animal
 
 ```
 
+public interface Animal
+{    
+	void Speak();     
+	string Name    
+	{        
+		get;       
+		set;    
+	}  
+} 
+class Dog : Animal
+{    
+	private string name;     
+	public void Speak()    
+	{        
+		Console.WriteLine(name + "->멍멍!");    
+	}     
+	
+	public string Name    
+	{        
+		get       
+		{            
+			return name;       
+		}        
+		set        
+		{            
+			name = value;        
+		}    
+	}
+} 
+Dog temp = new Dog();
+temp.Name = "흰둥이";
+temp.Speak(); //흰둥이->멍멍!
+
 
 ```
+
+### 4. 결론
+-Vritual은 하나의 기능을 하는 완전한 클래스이며, 파생클래스에서 상속해서 추가적인 기능추가 및 virtual 한정자가 달린 것을 재정의해서 사용가능합니다.
+-Abstract는 여러개의 파생 클래스에서 공유할 기본 클래스의 공통적인 정의만 하고 ,파생클래스에서 abstract 한정자가 달린 것을 모두 재정의(필수)해야 합니다.
+-Interface에서도 abstract와 비슷하지만 멤버변수를 사용할 수 없습니다.  보통 abstract는 개념적으로 계층적인 구조에서 사용이 되며(동물이나 어떤 사물의 계층적인 구조가있을때) Interface는 서로다른 계층이나 타입이라도 같은기능을 추가하고 싶을때 사용합니다.(사람이나 기계가 말을하게(speak)하는 인터페이스를 추가할때)
