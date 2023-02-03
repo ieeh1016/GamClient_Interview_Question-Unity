@@ -1,2 +1,2 @@
 Interview_Question
-기술 면접 대비
+개발자 기술 면접 대비 스터디
